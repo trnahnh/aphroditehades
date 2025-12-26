@@ -5,7 +5,7 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from "@radix-ui/react-h
 
 const NavBar = () => {
   return (
-    <nav className="flex items-center justify-between w-full p-3 border-b-2 pl-10">
+    <nav className="sticky top-0 flex items-center justify-between w-full p-3 border-b-2 pl-10">
       <div className="flex items-center gap-3">
         <img src={logo} className="h-8 hover:drop-shadow-[0_0_5px_rgba(60,130,240,1)] transition-all" />
         <p className="text-xl hover:drop-shadow-[0_0_10px_rgba(60,130,240,1)] transition-all">Katana ID</p>
