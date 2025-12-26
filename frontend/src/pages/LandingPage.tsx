@@ -4,13 +4,13 @@ import { LucideSearch, LucideSearchCode } from "lucide-react"
 const LandingPage = () => {
   return (
     <>
-      <div className="flex flex-col justify-center pt-20 items-center">
+      <div className="flex flex-col justify-center pt-25 items-center">
         <Button variant={"outline"} className="group overflow-hidden rounded-2xl">
           <LucideSearch className="group-hover:hidden transition-opacity" />
           Check for deepfake
           <LucideSearchCode className="hidden group-hover:block mr-2 transition-all" />
         </Button>
-        <div className="font-bold text-7xl text-center mt-10">
+        <div className="font-semibold text-7xl text-center mt-10">
           <h1 className="">Detect <span className="bg-linear-to-r from-purple-500 to-blue-100 bg-clip-text text-transparent">
             Deepfake
           </span> Content</h1>
