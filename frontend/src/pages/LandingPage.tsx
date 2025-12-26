@@ -10,7 +10,7 @@ const LandingPage = () => {
           Check for deepfake
           <LucideSearchCode className="hidden group-hover:block mr-2 transition-all" />
         </Button>
-        <div className="font-semibold text-7xl text-center mt-10">
+        <div className="font-bold text-7xl text-center mt-10">
           <h1 className="">Detect <span className="bg-linear-to-r from-purple-500 to-blue-100 bg-clip-text text-transparent">
             Deepfake
           </span> Content</h1>
