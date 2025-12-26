@@ -4,10 +4,7 @@ function App() {
 
   return (
     <>
-    <NavBar />
-      <p className=''>
-        Coming soon!
-      </p>
+      <NavBar></NavBar>
     </>
   )
 }
