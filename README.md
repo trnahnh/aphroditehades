@@ -2,7 +2,8 @@
 
 See the app live at: [katanaid.com](https://www.katanaid.com/)
 
-## Development Todos - Anh Tran & Khiem Nguyen
+## Development Todos
+Anh Tran & Khiem Nguyen
 ### Backend - Go & PostgreSQL
 - [ ] Set up health/ - Anh
 - [ ] Set up login/ - Anh
