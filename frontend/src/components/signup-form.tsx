@@ -8,12 +8,14 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { useNavigate } from "react-router-dom"
 import logo from '/logo.svg'
 
 export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"form">) {
+  const navigate = useNavigate()
   return (
     <form className={cn("flex flex-col gap-6 max-w-sm w-full", className)} {...props}>
       <FieldGroup>
@@ -31,14 +33,11 @@ export function SignupForm({
         </Field>
         <Field>
           <FieldLabel htmlFor="password">Password</FieldLabel>
-          <Input id="password" type="password" required />
-          <FieldDescription>
-            Must be at least 8 characters long.
-          </FieldDescription>
+          <Input id="password" type="password" placeholder="••••••••" required />
         </Field>
         <Field>
           <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
-          <Input id="confirm-password" type="password" required />
+          <Input id="confirm-password" type="password" placeholder="••••••••" required />
         </Field>
         <Field>
           <Button type="submit">Create Account</Button>
@@ -55,7 +54,7 @@ export function SignupForm({
             Sign up with GitHub
           </Button>
           <FieldDescription className="px-6 text-center">
-            Already have an account? <a href="#">Sign in</a>
+            Already have an account? <a onClick={() => navigate('/login')}>Login</a>
           </FieldDescription>
         </Field>
       </FieldGroup>
