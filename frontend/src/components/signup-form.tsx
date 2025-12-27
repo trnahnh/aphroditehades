@@ -40,7 +40,7 @@ export function SignupForm({
     }
 
     setIsMatchedPassword(password === confirmPassword);
-    if (!isMatchedPassword) {
+    if (password !== confirmPassword) {
       return false;
     }
 
@@ -104,7 +104,12 @@ export function SignupForm({
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="confirm-password">Confirm Password</FieldLabel>
+          <FieldLabel htmlFor="confirm-password">
+            Confirm Password{" "}
+            {!isMatchedPassword && (
+              <span className="text-destructive font-normal"> - Passwords do not match</span>
+            )}
+          </FieldLabel>
           <Input
             id="confirm-password"
             type="password"
@@ -113,10 +118,15 @@ export function SignupForm({
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          {isMatchedPassword || <FieldError>Passwords do not match</FieldError>}
         </Field>
         <Field>
-          <Button type="submit" disabled={isSigningUp}>{isSigningUp ? <LucideLoader2 className="animate-spin"/> : "Create Account"}</Button>
+          <Button type="submit" disabled={isSigningUp}>
+            {isSigningUp ? (
+              <LucideLoader2 className="animate-spin" />
+            ) : (
+              "Create Account"
+            )}
+          </Button>
         </Field>
         <FieldSeparator>Or continue with</FieldSeparator>
         <Field>
