@@ -17,6 +17,11 @@ type SignupRequest struct {
 	Password string `json:"password"`
 }
 
+type LoginRequest struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
 // SuccessResponse shared by both login and signup
 type SuccessResponse struct {
 	Token    string `json:"token"`
