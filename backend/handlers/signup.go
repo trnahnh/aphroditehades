@@ -50,7 +50,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	}
 
 	username := strings.ToLower(strings.TrimSpace(req.Username)) // Normalize. No duplicate
-	email := strings.ToLower(strings.TrimSpace(req.Email)) // Normalize. No duplicate
+	email := strings.ToLower(strings.TrimSpace(req.Email))       // Normalize. No duplicate
 	password := strings.TrimSpace(req.Password)
 
 	// Validate input
@@ -118,6 +118,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 		"user_id":  userID,
 		"username": strings.ToLower(req.Username),
 		"email":    strings.ToLower(req.Email),
+		"iat":      time.Now().Unix(),
 		"exp":      time.Now().Add(time.Hour * 24).Unix(),
 	})
 
@@ -130,15 +131,15 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Log successful signup
-	log.Printf("New user signed up: %s (%s)", strings.ToLower(req.Username), strings.ToLower(req.Email))
+	log.Printf("New user signed up: %s - %s", username, email)
 
 	// Return success response
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	json.NewEncoder(w).Encode(SignupResponse{
 		Token:    tokenString,
-		Username: strings.ToLower(req.Username),
-		Email:    strings.ToLower(req.Email),
+		Username: username,
+		Email:    email,
 		Message:  "User created successfully",
 	})
 }
