@@ -30,7 +30,7 @@ type SignupResponse struct {
 	Message  string `json:"message"`
 }
 
-type ErrorRespnse struct {
+type ErrorResponse struct {
 	Error string `json:"error"`
 }
 
