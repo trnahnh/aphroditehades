@@ -98,7 +98,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	// Generating token
 	tokenString, err := generateSignedToken(userID, username, email)
 	if err != nil {
-		log.Print("Error signing token with secret:", err)
+		log.Print("Error generating token for signup:", err)
 		writeJSON(w, http.StatusInternalServerError, ErrorResponse{Error: "Something went wrong"})
 		return
 	}
@@ -160,7 +160,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	tokenString, err := generateSignedToken(user.ID, user.Username, user.Email)
 	if err != nil {
-		log.Print("Error signing token with secret:", err)
+		log.Print("Error generating token for login:", err)
 		writeJSON(w, http.StatusInternalServerError, ErrorResponse{Error: "Something went wrong"})
 		return
 	}
