@@ -88,7 +88,7 @@ const LandingPage = () => {
           </div>
         </div>
         {/* Fade overlay */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-linear-to-t from-background to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-linear-to-t from-background from-30% via-background/50 to-transparent pointer-events-none" />
       </div>
     </>
   );
