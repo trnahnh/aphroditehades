@@ -14,7 +14,7 @@ const NavBar = () => {
   const { token, logout } = useAuthStore();
 
   return (
-    <nav className="sticky top-0 w-full h-full border-b-2 bg-background py-2">
+    <nav className="sticky top-0 w-full h-full border-b-2 bg-background py-1.5">
       <div className="mx-auto max-w-6xl flex items-center justify-center">
         <div
           className="flex flex-1 items-center gap-3"
