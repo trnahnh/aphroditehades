@@ -12,17 +12,17 @@ const LandingPage = () => {
           variant="outline"
           className="group overflow-hidden rounded-2xl"
         >
-          <LucideSearch className="group-hover:hidden transition-opacity" />
           Check for deepfake
-          <LucideSearchCode className="hidden group-hover:block mr-2 transition-all" />
+          <LucideSearch className="group-hover:hidden transition-all" />
+          <LucideSearchCode className="hidden group-hover:block group-hover:ml-1 transition-all" />
         </Button>
-        <h1 className="font-bold text-7xl text-center mt-5 max-w-5xl leading-normal">
-          Detect{" "}
-          <span className="bg-linear-to-r from-purple-500 to-blue-100 bg-clip-text text-transparent">
+        <h1 className="font-bold text-7xl text-center mt-5 max-w-2xl leading-normal">
+          Cut through{" "}
+          <span className="bg-linear-to-r from-purple-500 to-blue-100 drop-shadow-[0_0_5px_rgba(190,10,190,1)] bg-clip-text text-transparent">
             Deepfake
           </span>{" "}
           Content with {" "} 
-          <span className="bg-linear-to-r from-blue-500 to-slate-100 bg-clip-text text-transparent drop-shadow-[0_0_3px_rgba(60,130,240,0.8)]">
+          <span className="bg-linear-to-r from-blue-500 to-slate-100 bg-clip-text text-transparent drop-shadow-[0_0_9px_rgba(60,130,240,0.8)]">
             Precision
           </span>
         </h1>
@@ -31,7 +31,7 @@ const LandingPage = () => {
             Upload any image, video or audio. Get instant verification. <br/>
             Let{" "}
             <span className="bg-linear-to-r from-blue-500 to-white bg-clip-text text-transparent">
-              <b>AI-powered analysis</b>
+              <b>AI-powered analysis 🔎</b> 
             </span>{" "} 
             catch what the eye can't.<br/>
             Completely for {" "}
