@@ -39,8 +39,6 @@ const LandingPage = () => {
               <b>free ✨!</b>
             </span>
           </p>
-          <p className="mt-2">
-          </p>
         </div>
         <div className="flex items-center justify-center gap-4 mt-10">
           <Button asChild>
