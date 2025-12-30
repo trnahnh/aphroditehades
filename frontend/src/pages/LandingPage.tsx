@@ -18,11 +18,11 @@ const LandingPage = () => {
         </Button>
         <h1 className="font-bold text-7xl text-center mt-5 max-w-2xl leading-normal">
           Cut through{" "}
-          <span className="bg-linear-to-r from-purple-500 to-blue-100 drop-shadow-[0_0_5px_rgba(190,10,190,1)] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-purple-500 to-pink-300 drop-shadow-[0_0_5px_rgba(190,10,190,1)] bg-clip-text text-transparent">
             Deepfake
           </span>{" "}
           Content with {" "} 
-          <span className="bg-linear-to-r from-blue-500 to-slate-100 bg-clip-text text-transparent drop-shadow-[0_0_9px_rgba(60,130,240,0.8)]">
+          <span className="bg-linear-to-r from-blue-500 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_9px_rgba(60,130,240,0.8)]">
             Precision
           </span>
         </h1>
@@ -43,7 +43,7 @@ const LandingPage = () => {
         <div className="flex items-center justify-center gap-4 mt-10">
           <Button asChild>
             <Link to="/dashboard" className="flex items-center">
-              Get Started
+              Start verifying for free
               <ArrowRightIcon className="w-4 h-4 ml-2" />
             </Link>
           </Button>
