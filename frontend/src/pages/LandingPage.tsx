@@ -34,7 +34,7 @@ const LandingPage = () => {
             Wants
           </span>
         </h1>
-        <div className="text-center mt-6">
+        <div className="text-center mt-6 text-accent-foreground">
           <p className="text-md max-w-xl">
             Deepfakes, bots, AI-generated spam - they're everywhere. <br />
             Katana gives you{" "}
@@ -116,7 +116,7 @@ const LandingPage = () => {
               <b>Katana precision ✨!</b>
             </span>
             </h2>
-            <p className="mt-4 text-center lg:text-center text-lg text-muted-foreground max-w-lg">
+            <p className="mt-4 text-center lg:text-center text-lg text-accent-foreground max-w-lg">
               Detect deepfakes, block bots, and catch AI-generated content - all through one simple API.
             </p>
           </div>
@@ -133,16 +133,16 @@ const LandingPage = () => {
       <MaxWidthWrapper className="mt-20 max-w-[100vw] overflow-x-hidden scrollbar-hide">
                 <AnimationContainer delay={0.1}>
                     <LampContainer>
-                        <div className="flex flex-col items-center justify-center relative w-full text-center">
+                        <div className="flex flex-col items-center justify-center relative w-full text-center max-w-3xl">
                             <h2 className="bg-linear-to-b from-neutral-200 to-neutral-400 py-4 bg-clip-text text-center text-4xl md:text-7xl leading-[1.15]! font-medium font-heading tracking-tight text-transparent mt-8">
-                                Step into the future of link management
+                                Start protecting your platform today
                             </h2>
-                            <p className="text-muted-foreground mt-6 max-w-md mx-auto">
-                                Experience the cutting-edge solution that transforms how you handle your links. Elevate your online presence with our next-gen platform.
+                            <p className="text-accent-foreground mt-6 max-w-md mx-auto">
+                                Integrate in minutes - for free. One API call to verify images, detect bots, and catch AI-generated content before it hits your platform.
                             </p>
                             <div className="mt-6">
                                 <Button>
-                                    Get started for free
+                                    Get started now.
                                     <ArrowRightIcon className="w-4 h-4 ml-2" />
                                 </Button>
                             </div>
