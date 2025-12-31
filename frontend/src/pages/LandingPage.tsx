@@ -25,12 +25,12 @@ const LandingPage = () => {
         <MagicBadge title="AI verification suite" />
         <h1 className="font-bold text-7xl text-center mt-5 max-w-3xl leading-24">
           The{" "}
-          <span className="bg-linear-to-r from-purple-500 to-pink-300 drop-shadow-[0_0_5px_rgba(190,10,190,1)] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r  from-blue-500 to-cyan-300  bg-clip-text text-transparent drop-shadow-[0_0_9px_rgba(60,130,240,0.8)]">
             Verification Blade
           </span>{" "}
           Your Platform{" "}
-          <span className="bg-linear-to-r from-blue-500 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_9px_rgba(60,130,240,0.8)]">
-            Needs
+          <span className="bg-linear-to-r from-purple-500 to-pink-300 bg-clip-text text-transparent drop-shadow-[0_0_5px_rgba(190,10,190,1)] ">
+            Wants
           </span>
         </h1>
         <div className="text-center mt-6">
