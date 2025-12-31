@@ -15,9 +15,9 @@ const LandingPage = () => {
       {/* Grid Background with cursor effect */}
       <GridBackground
         glowColor="#a855f7"
-        glowRadius={200}
-        glowIntensity={0.5}
-        gridSize={40}
+        glowRadius={180}
+        glowIntensity={0.3}
+        gridSize={32}
       />
 
       {/* Hero Section */}
@@ -65,7 +65,7 @@ const LandingPage = () => {
       {/* Image Gallery - Bento Grid */}
       <div className="relative z-10 pt-20 pb-20 px-4 w-full max-w-5xl mx-auto">
         {/* Glow behind grid */}
-        <div className="absolute inset-10 bg-blue-500/40 blur-3xl rounded-full pointer-events-none" />
+        <div className="absolute inset-10 bg-blue-500/20 blur-3xl rounded-full pointer-events-none" />
         <div className="relative grid grid-cols-3 grid-rows-2 gap-4 h-125">
           {/* Large image - spans 2 columns */}
           <div className="col-span-2 row-span-1 relative rounded-xl overflow-hidden ring-1 ring-foreground/20">
