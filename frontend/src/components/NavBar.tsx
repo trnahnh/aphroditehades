@@ -35,7 +35,7 @@ const NavBar = () => {
         {/* Desktop nav - hidden on mobile */}
         <div className="hidden md:flex items-center justify-center gap-3">
           <HoverCard openDelay={200} closeDelay={400}>
-            <HoverCardTrigger asChild>
+            <HoverCardTrigger>
               <Button variant="ghost">Developers</Button>
             </HoverCardTrigger>
             <HoverCardContent className="gap-2 mt-2 bg-popover p-2 rounded-md border animate-accordion-down">
