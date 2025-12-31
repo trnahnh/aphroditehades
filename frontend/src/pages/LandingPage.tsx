@@ -1,4 +1,4 @@
-import { ArrowRightIcon, LucideSearch, LucideSearchCode } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import dashboardImg from "@/assets/dashboard-example.png";
 import AnimationContainer  from "@/components/ui/animation-container";
