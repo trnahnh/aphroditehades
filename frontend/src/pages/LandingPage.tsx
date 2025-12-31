@@ -1,14 +1,13 @@
 import { ArrowRightIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import dashboardImg from "@/assets/dashboard-example.png";
-import AnimationContainer  from "@/components/ui/animation-container";
-import MaxWidthWrapper from "@/components/ui/max-width-container"
+import AnimationContainer from "@/components/ui/animation-container";
+import MaxWidthWrapper from "@/components/ui/max-width-container";
 import { BentoCard, BentoGrid, CARDS } from "@/components/ui/bento-grid";
 import { Button } from "@/components/ui/button";
 import MagicBadge from "@/components/ui/magic-badge";
 import GridBackground from "@/components/GridBackground";
 import { LampContainer } from "@/components/ui/lamb";
-
 
 const LandingPage = () => {
   return (
@@ -111,13 +110,14 @@ const LandingPage = () => {
           <div className="flex flex-col w-full items-center lg:items-center justify-center py-8">
             <MagicBadge title="Features" />
             <h2 className="text-center lg:text-center text-3xl md:text-5xl leading-[1.1]! font-medium font-heading text-foreground mt-6">
-              Cut the AI slop with {" "}
+              Cut the AI slop with{" "}
               <span className="bg-linear-to-r from-white to-blue-500 bg-clip-text text-transparent">
-              <b>Katana precision ✨!</b>
-            </span>
+                <b>Katana precision ✨!</b>
+              </span>
             </h2>
             <p className="mt-4 text-center lg:text-center text-lg text-accent-foreground max-w-lg">
-              Detect deepfakes, block bots, and catch AI-generated content - all through one simple API.
+              Detect deepfakes, block bots, and catch AI-generated content - all
+              through one simple API.
             </p>
           </div>
         </AnimationContainer>
@@ -131,25 +131,27 @@ const LandingPage = () => {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper className="mt-20 max-w-[100vw] overflow-x-hidden scrollbar-hide">
-                <AnimationContainer delay={0.1}>
-                    <LampContainer>
-                        <div className="flex flex-col items-center justify-center relative w-full text-center max-w-3xl">
-                            <h2 className="bg-linear-to-b from-neutral-200 to-neutral-400 py-4 bg-clip-text text-center text-4xl md:text-7xl leading-[1.15]! font-medium font-heading tracking-tight text-transparent mt-8">
-                                Start protecting your platform today
-                            </h2>
-                            <p className="text-accent-foreground mt-6 max-w-md mx-auto">
-                                Integrate in minutes - for free. One API call to verify images, detect bots, and catch AI-generated content before it hits your platform.
-                            </p>
-                            <div className="mt-6">
-                                <Button>
-                                    Get started now.
-                                    <ArrowRightIcon className="w-4 h-4 ml-2" />
-                                </Button>
-                            </div>
-                        </div>
-                    </LampContainer>
-                </AnimationContainer>
-            </MaxWidthWrapper>
+        <AnimationContainer delay={0.1}>
+          <LampContainer>
+            <div className="flex flex-col items-center justify-center relative w-full text-center max-w-3xl">
+              <h2 className="bg-linear-to-b from-neutral-200 to-neutral-400 py-4 bg-clip-text text-center text-4xl md:text-7xl leading-[1.15]! font-medium font-heading tracking-tight text-transparent mt-8">
+                Start protecting your platform today
+              </h2>
+              <p className="text-accent-foreground mt-6 max-w-md mx-auto">
+                Integrate in minutes - for free. One API call to verify images,
+                detect bots, and catch AI-generated content before it hits your
+                platform.
+              </p>
+              <div className="mt-6">
+                <Button>
+                  Get started now.
+                  <ArrowRightIcon className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
+          </LampContainer>
+        </AnimationContainer>
+      </MaxWidthWrapper>
     </>
   );
 };
