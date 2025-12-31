@@ -1,15 +1,11 @@
 import { buttonVariants } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Command,
-} from "@/components/ui/command";
 import { cn } from "../../lib/utils";
 import {
   ArrowRightIcon,
-  CalendarIcon,
-  Link2Icon,
-  SearchIcon,
-  WaypointsIcon,
+  CodeIcon,
+  FileTextIcon,
+  ScanFaceIcon,
+  ShieldIcon,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import {
@@ -19,90 +15,108 @@ import {
   CardHeader,
   CardTitle,
 } from "./card";
-import { Input } from "./input";
-import { Label } from "./label";
 
 export const CARDS = [
   {
-    Icon: Link2Icon,
-    name: "Shorten links",
-    description: "Create short links that are easy to remember and share.",
+    Icon: ScanFaceIcon,
+    name: "Deepfake Detection",
+    description: "Upload images, videos, or audio to instantly detect AI-generated manipulation.",
     href: "#",
-    cta: "Learn more",
+    cta: "Try it free",
     className: "col-span-3 lg:col-span-1",
     background: (
       <Card className="absolute top-10 left-10 origin-top rounded-none rounded-tl-md transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_0%,#000_100%)] group-hover:scale-105 border border-border border-r-0">
         <CardHeader>
-          <CardTitle>Create short links</CardTitle>
+          <CardTitle>Upload media</CardTitle>
           <CardDescription>
-            Create short links that are easy to remember and share.
+            Drag & drop or browse to analyze content.
           </CardDescription>
         </CardHeader>
         <CardContent className="-mt-4">
-          <Label>Paste your link</Label>
-          <Input
-            type="text"
-            placeholder="Paste your link here..."
-            className="w-full focus-visible:ring-0 focus-visible:ring-transparent"
-          />
+          <div className="border-2 border-dashed border-border rounded-lg p-4 text-center text-muted-foreground text-sm">
+            Drop image, video, or audio
+          </div>
         </CardContent>
       </Card>
     ),
   },
   {
-    Icon: SearchIcon,
-    name: "Search your links",
-    description: "Quickly find the links you need with AI-powered search.",
+    Icon: ShieldIcon,
+    name: "Bot Shield",
+    description: "Real-time API to block bots and fake accounts from infiltrating your platform.",
     href: "#",
-    cta: "Learn more",
+    cta: "View docs",
     className: "col-span-3 lg:col-span-2",
     background: (
-      <Command className="absolute right-10 top-10 w-[70%] origin-to translate-x-0 border border-border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10 p-2">
-        <Input placeholder="Type to search..." />
-        <div className="mt-1 cursor-pointer">
-          <div className="px-4 py-2 hover:bg-muted rounded-md">
-            linkify.io/hdf00c
+      <div className="absolute right-10 top-10 w-[70%] origin-top translate-x-0 border border-border rounded-lg transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10 p-4 bg-black/50">
+        <div className="flex items-center gap-2 text-green-500 text-sm mb-2">
+          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+          Live protection active
+        </div>
+        <div className="space-y-2 text-xs font-mono">
+          <div className="flex justify-between text-neutral-400">
+            <span>192.168.1.42</span>
+            <span className="text-red-400">Blocked - Bot detected</span>
           </div>
-          <div className="px-4 py-2 hover:bg-muted rounded-md">
-            linkify.io/sdv0n0
+          <div className="flex justify-between text-neutral-400">
+            <span>10.0.0.128</span>
+            <span className="text-green-400">Verified human</span>
           </div>
-          <div className="px-4 py-2 hover:bg-muted rounded-md">
-            linkify.io/03gndo
+          <div className="flex justify-between text-neutral-400">
+            <span>172.16.0.89</span>
+            <span className="text-red-400">Blocked - Fake account</span>
           </div>
-          <div className="px-4 py-2 hover:bg-muted rounded-md">
-            linkify.io/09vmmw
-          </div>
-          <div className="px-4 py-2 hover:bg-muted rounded-md">
-            linkify.io/s09vws
-          </div>
-          <div className="px-4 py-2 hover:bg-muted rounded-md">
-            linkify.io/sd8fv5
+          <div className="flex justify-between text-neutral-400">
+            <span>192.168.0.15</span>
+            <span className="text-green-400">Verified human</span>
           </div>
         </div>
-      </Command>
+      </div>
     ),
   },
   {
-    Icon: WaypointsIcon,
-    name: "Connect your apps",
-    description: "Integrate with your favorite apps and services.",
+    Icon: FileTextIcon,
+    name: "Content Authenticity",
+    description: "Detect AI-written text in reviews, comments, or user submissions.",
     href: "#",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2 max-w-full overflow-hidden",
+    background: (
+      <div className="absolute right-10 top-10 w-[80%] origin-top border border-border rounded-lg transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105 p-4 bg-black/50">
+        <div className="text-sm text-neutral-300 leading-relaxed">
+          <span className="bg-red-500/20 text-red-300 px-1 rounded">This product exceeded my expectations</span> and{" "}
+          <span className="bg-red-500/20 text-red-300 px-1 rounded">I would highly recommend it to anyone</span> looking for{" "}
+          <span className="bg-red-500/20 text-red-300 px-1 rounded">a quality solution that delivers results</span>.
+        </div>
+        <div className="mt-3 flex items-center gap-2 text-xs">
+          <span className="text-red-400 font-medium">87% AI-generated</span>
+          <span className="text-neutral-500">|</span>
+          <span className="text-neutral-400">3 suspicious phrases detected</span>
+        </div>
+      </div>
+    ),
   },
   {
-    Icon: CalendarIcon,
-    name: "Calendar",
-    description: "Keep track of your links with our calendar view.",
+    Icon: CodeIcon,
+    name: "Verification API",
+    description: "Plug-and-play REST API with SDKs for seamless integration.",
     className: "col-span-3 lg:col-span-1",
     href: "#",
-    cta: "Learn more",
+    cta: "Get API key",
     background: (
-      <Calendar
-        mode="single"
-        selected={new Date(2022, 4, 11, 0, 0, 0)}
-        className="absolute right-0 top-10 origin-top rounded-md border border-border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
-      />
+      <div className="absolute right-4 top-10 left-4 origin-top rounded-md border border-border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105 p-3 bg-black/80 font-mono text-xs">
+        <div className="text-neutral-500">// Verify content in one call</div>
+        <div className="mt-1">
+          <span className="text-purple-400">const</span> <span className="text-blue-300">result</span> <span className="text-neutral-400">=</span> <span className="text-purple-400">await</span> <span className="text-yellow-300">katana</span>.<span className="text-blue-300">verify</span>({"{"}
+        </div>
+        <div className="pl-4 text-neutral-300">
+          type: <span className="text-green-400">"image"</span>,
+        </div>
+        <div className="pl-4 text-neutral-300">
+          url: <span className="text-green-400">"https://..."</span>
+        </div>
+        <div>{"}"});</div>
+      </div>
     ),
   },
 ];

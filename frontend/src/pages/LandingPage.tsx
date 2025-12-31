@@ -22,11 +22,7 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <div className="relative z-10 flex flex-col justify-center pt-10 md:pt-20 items-center">
-        <Button variant="outline" className="group overflow-hidden rounded-2xl">
-          Check for deepfake
-          <LucideSearch className="group-hover:hidden transition-all" />
-          <LucideSearchCode className="hidden group-hover:block transition-all" />
-        </Button>
+        <MagicBadge title="Check for deepfake" />          
         <h1 className="font-bold text-7xl text-center mt-5 max-w-2xl leading-24">
           Cut through{" "}
           <span className="bg-linear-to-r from-purple-500 to-pink-300 drop-shadow-[0_0_5px_rgba(190,10,190,1)] bg-clip-text text-transparent">
@@ -108,16 +104,18 @@ const LandingPage = () => {
       </div>
 
       {/* Features section */}
-      <MaxWidthWrapper className="pt-10">
+      <MaxWidthWrapper className="relative pt-25 z-10">
         <AnimationContainer delay={0.1}>
           <div className="flex flex-col w-full items-center lg:items-center justify-center py-8">
             <MagicBadge title="Features" />
             <h2 className="text-center lg:text-center text-3xl md:text-5xl leading-[1.1]! font-medium font-heading text-foreground mt-6">
-              Manage Links Like a Pro
+              Cut the AI slop with {" "}
+              <span className="bg-linear-to-r from-white to-blue-500 bg-clip-text text-transparent">
+              <b>Katana precision ✨!</b>
+            </span>
             </h2>
             <p className="mt-4 text-center lg:text-center text-lg text-muted-foreground max-w-lg">
-              Linkify is a powerful link management tool that helps you shorten,
-              track, and organize all your links in one place.
+              Detect deepfakes, block bots, and catch AI-generated content - all through one simple API.
             </p>
           </div>
         </AnimationContainer>

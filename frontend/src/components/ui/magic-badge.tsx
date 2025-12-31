@@ -1,16 +1,29 @@
 interface Props {
-    title: string;
+  title: string;
+  color1?: string;
+  color2?: string;
+  color3?: string;
 }
 
-const MagicBadge = ({ title }: Props) => {
-    return (
-        <div className="relative inline-flex h-8 overflow-hidden rounded-full p-[1.5px] focus:outline-none select-none">
-            <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#6d28d9_0%,#d8b4fe_50%,#6d28d9_100%)]" />
-            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-4 py-1 text-sm font-medium text-white backdrop-blur-3xl">
-                {title}
-            </span>
-        </div>
-    )
+const MagicBadge = ({
+  title,
+  color1 = "#0096FF",
+  color2 = "#1434A4",
+  color3 = "#6F8FAF",
+}: Props) => {
+  return (
+    <div className="relative inline-flex h-8 overflow-hidden rounded-full p-[1.5px] focus:outline-none select-none">
+      <span
+        className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite]"
+        style={{
+          background: `conic-gradient(from 90deg at 50% 50%, ${color1} 0%, ${color2} 50%, ${color3} 100%)`,
+        }}
+      />
+      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-4 py-1 text-sm font-medium text-white backdrop-blur-3xl hover:bg-accent/10 hover:px-8 transition-all">
+        {title}
+      </span>
+    </div>
+  );
 };
 
-export default MagicBadge
+export default MagicBadge;
