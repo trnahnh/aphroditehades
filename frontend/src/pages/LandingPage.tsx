@@ -131,11 +131,11 @@ const LandingPage = () => {
       </MaxWidthWrapper>
 
       {/* CTA section */}
-      <MaxWidthWrapper className="mt-40 max-w-[100vw] overflow-x-hidden scrollbar-hide">
+      <MaxWidthWrapper className="mt-20 max-w-[100vw] overflow-x-hidden scrollbar-hide">
         <AnimationContainer delay={0.1}>
           <LampContainer>
             <div className="flex flex-col items-center justify-center relative w-full text-center max-w-3xl">
-              <h2 className="bg-linear-to-b from-neutral-200 to-neutral-400 py-4 bg-clip-text text-center text-4xl md:text-7xl leading-[1.15]! font-medium font-heading tracking-tight text-transparent mt-8">
+              <h2 className="bg-linear-to-b from-neutral-200 to-neutral-400 py-4 bg-clip-text text-center text-5xl md:text-7xl leading-[1.15]! font-medium font-heading tracking-tight text-transparent">
                 Start protecting your platform today
               </h2>
               <p className="text-accent-foreground mt-4 max-w-md mx-auto">
