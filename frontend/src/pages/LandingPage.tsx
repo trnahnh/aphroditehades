@@ -2,12 +2,21 @@ import { Button } from "@/components/ui/button";
 import { ArrowRightIcon, LucideSearch, LucideSearchCode } from "lucide-react";
 import { Link } from "react-router-dom";
 import dashboardImg from "@/assets/dashboard-example.png";
+import GridBackground from "@/components/GridBackground";
 
 const LandingPage = () => {
   return (
     <>
+      {/* Grid Background with cursor effect */}
+      <GridBackground
+        glowColor="#a855f7"
+        glowRadius={200}
+        glowIntensity={0.5}
+        gridSize={40}
+      />
+
       {/* Hero Section */}
-      <div className="flex flex-col justify-center pt-10 md:pt-20 items-center">
+      <div className="relative z-10 flex flex-col justify-center pt-10 md:pt-20 items-center">
         <Button variant="outline" className="group overflow-hidden rounded-2xl">
           Check for deepfake
           <LucideSearch className="group-hover:hidden transition-all" />
@@ -18,7 +27,7 @@ const LandingPage = () => {
           <span className="bg-linear-to-r from-purple-500 to-pink-300 drop-shadow-[0_0_5px_rgba(190,10,190,1)] bg-clip-text text-transparent">
             Deepfake
           </span>{" "}
-          Content with {" "}
+          Content with{" "}
           <span className="bg-linear-to-r from-blue-500 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_9px_rgba(60,130,240,0.8)]">
             Precision
           </span>
@@ -52,7 +61,7 @@ const LandingPage = () => {
       </div>
 
       {/* Image Gallery - Bento Grid */}
-      <div className="relative pt-20 pb-20 px-4 w-full max-w-5xl mx-auto">
+      <div className="relative z-10 pt-20 pb-20 px-4 w-full max-w-5xl mx-auto">
         {/* Glow behind grid */}
         <div className="absolute inset-10 bg-blue-500/40 blur-3xl rounded-full pointer-events-none" />
         <div className="relative grid grid-cols-3 grid-rows-2 gap-4 h-125">

@@ -19,7 +19,7 @@ const NavBar = () => {
   const { token, logout } = useAuthStore();
 
   return (
-    <nav className="sticky top-0 w-full h-full border-b-2 bg-background py-1.5 px-4">
+    <nav className="sticky top-0 z-50 w-full h-full border-b border-border/40 bg-background/10 backdrop-blur-md py-1.5 px-4">
       <div className="mx-auto max-w-6xl flex items-center justify-between">
         {/* Logo */}
         <div
