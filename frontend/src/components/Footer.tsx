@@ -15,9 +15,9 @@ const Footer = () => {
                             <Logo />
                         </div>
                         <p className="text-muted-foreground mt-4 text-sm text-start">
-                            Manage your as with ease.
+                            Auth, avatars, usernames, bot protection. Use what you need.
                         </p>
-                        <span className="mt-4 text-neutral-200 text-sm flex items-center">
+                        <span className="mt-4 text-foreground/80 text-sm flex items-center">
                             Made by <a href="https://shreyas-sihasane.vercel.app/" className="font-semibold ml-1">Shreyas</a>
                         </span>
                     </div>
@@ -26,8 +26,8 @@ const Footer = () => {
                 <div className="grid-cols-2 gap-8 grid mt-16 xl:col-span-2 xl:mt-0">
                     <div className="md:grid md:grid-cols-2 md:gap-8">
                         <AnimationContainer delay={0.2}>
-                            <div className="">
-                                <h3 className="text-base font-medium text-white">
+                            <div>
+                                <h3 className="text-base font-medium text-foreground">
                                     Product
                                 </h3>
                                 <ul className="mt-4 text-sm text-muted-foreground">
@@ -56,11 +56,11 @@ const Footer = () => {
                         </AnimationContainer>
                         <AnimationContainer delay={0.3}>
                             <div className="mt-10 md:mt-0 flex flex-col">
-                                <h3 className="text-base font-medium text-white">
+                                <h3 className="text-base font-medium text-foreground">
                                     Integrations
                                 </h3>
                                 <ul className="mt-4 text-sm text-muted-foreground">
-                                    <li className="">
+                                    <li>
                                         <a href="" className="hover:text-foreground transition-all duration-300">
                                             Facebook
                                         </a>
@@ -77,7 +77,7 @@ const Footer = () => {
                                     </li>
                                     <li className="mt-2">
                                         <a href="" className="hover:text-foreground transition-all duration-300">
-                                            aedIn
+                                            LinkedIn
                                         </a>
                                     </li>
                                 </ul>
@@ -86,8 +86,8 @@ const Footer = () => {
                     </div>
                     <div className="md:grid md:grid-cols-2 md:gap-8">
                         <AnimationContainer delay={0.4}>
-                            <div className="">
-                                <h3 className="text-base font-medium text-white">
+                            <div>
+                                <h3 className="text-base font-medium text-foreground">
                                     Resources
                                 </h3>
                                 <ul className="mt-4 text-sm text-muted-foreground">
@@ -106,11 +106,11 @@ const Footer = () => {
                         </AnimationContainer>
                         <AnimationContainer delay={0.5}>
                             <div className="mt-10 md:mt-0 flex flex-col">
-                                <h3 className="text-base font-medium text-white">
+                                <h3 className="text-base font-medium text-foreground">
                                     Company
                                 </h3>
                                 <ul className="mt-4 text-sm text-muted-foreground">
-                                    <li className="">
+                                    <li>
                                         <a href="" className="hover:text-foreground transition-all duration-300">
                                             About Us
                                         </a>
@@ -136,7 +136,7 @@ const Footer = () => {
             <div className="mt-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
                 <AnimationContainer delay={0.6}>
                     <p className="text-sm text-muted-foreground mt-8 md:mt-0">
-                        &copy; {new Date().getFullYear()} aify INC. All rights reserved.
+                        &copy; {new Date().getFullYear()} KatanaID. All rights reserved.
                     </p>
                 </AnimationContainer>
             </div>

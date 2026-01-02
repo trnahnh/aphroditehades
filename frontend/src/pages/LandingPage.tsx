@@ -14,25 +14,25 @@ const LandingPage = () => {
     <>
       {/* ----------------------------------Hero Section---------------------------------- */}
       <div className="relative z-10 flex flex-col justify-center pt-10 md:pt-20 items-center">
-        <MagicBadge title="AI verification suite" />
-        <h1 className="text-5xl md:text-8xl leading-tight text-center mt-5 max-w-5xl">
+        <MagicBadge title="AI Authentication Suite" />
+        <h1 className="text-5xl md:text-8xl leading-tight text-center mt-5 max-w-6xl">
           The{" "}
-          <span className="bg-linear-to-r  from-blue-500 to-cyan-300  bg-clip-text text-transparent drop-shadow-[0_0_5px_rgba(60,130,240,0.8)]">
-            Verification Blade
+          <span className="bg-linear-to-r from-blue-500 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_5px_--theme(--color-blue-500/80%)]">
+            Authentication Blade
           </span>{" "}
           Your Platform{" "}
-          <span className="bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent drop-shadow-[0_0_5px_rgba(190,190,190,1)] ">
+          <span className="bg-linear-to-r from-white to-slate-400 bg-clip-text text-transparent drop-shadow-[0_0_5px_var(--color-slate-400)]">
             Needs
           </span>
         </h1>
         <div className="text-center mt-6 text-accent-foreground">
           <p className="text-sm md:text-xl max-w-xl">
-            Deepfakes, bots, AI-generated spam - they're everywhere. <br />
+            Authentication, avatars, usernames, spam protection <br />
             Katana gives you{" "}
             <span className="bg-linear-to-r from-blue-500 to-white bg-clip-text text-transparent">
-              <b>one API</b>
+              one Toolkit
             </span>{" "}
-            to catch them all.
+            to nail them all.
             <br />
             <span className="bg-linear-to-r from-white to-amber-300 bg-clip-text text-transparent">
               Start free
@@ -43,7 +43,7 @@ const LandingPage = () => {
         <div className="flex items-center justify-center gap-4 mt-10">
           <Button asChild>
             <Link to="/dashboard" className="flex items-center">
-              Start verifying for free
+              Start authenticating for free
               <ArrowRightIcon className="w-4 h-4 ml-2" />
             </Link>
           </Button>
@@ -98,17 +98,16 @@ const LandingPage = () => {
       {/* ----------------------------------Features section---------------------------------- */}
       <MaxWidthWrapper className="py-15 relative z-10">
         <AnimationContainer delay={0.1}>
-          <div className="flex flex-col w-full items-center lg:items-center justify-center py-8">
+          <div className="flex flex-col w-full items-center justify-center py-8">
             <MagicBadge title="Features" />
-            <h2 className="text-center lg:text-center text-3xl md:text-5xl leading-[1.1]! font-medium font-heading text-foreground mt-6">
-              Cut the AI slop with{" "}
+            <h2 className="text-center text-3xl md:text-5xl leading-tight font-medium font-heading text-foreground mt-6">
+              Plug what you{" "}
               <span className="bg-linear-to-r from-white to-blue-500 bg-clip-text text-transparent">
-                <b>Katana precision ✨!</b>
+                need
               </span>
             </h2>
-            <p className="text-sm md:text-xl mt-4 text-center lg:text-center text-accent-foreground max-w-lg">
-              Detect deepfakes, block bots, and catch AI-generated content - all
-              through one simple API.
+            <p className="text-sm md:text-xl mt-4 text-center text-accent-foreground max-w-lg">
+              Use the full suite or just the pieces you want. One script tag, done.
             </p>
           </div>
         </AnimationContainer>
@@ -126,16 +125,15 @@ const LandingPage = () => {
         <AnimationContainer delay={0.1}>
           <LampContainer>
             <div className="flex flex-col items-center justify-center relative w-full text-center max-w-3xl">
-              <h2 className="text-3xl md:text-5xl bg-linear-to-b from-neutral-200 to-neutral-400 pt-7 bg-clip-text text-center leading-[1.15]! font-medium font-heading tracking-tight text-transparent">
-                Start protecting your platform today
+              <h2 className="text-3xl md:text-5xl pt-7 bg-clip-text text-center leading-tight font-medium font-heading tracking-tight">
+                Ready to ship?
               </h2>
               <p className="text-sm md:text-xl text-accent-foreground mt-4 max-w-md mx-auto">
-                Integrate in minutes - for free. One API call to verify contents before it hits your
-                platform.
+                Grab your API key and integrate in minutes. Free forever for most apps.
               </p>
               <div className="mt-6">
                 <Button>
-                  Get started now.
+                  Get your API key
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
                 </Button>
               </div>
