@@ -58,22 +58,17 @@ const Footer = () => {
                                 </h3>
                                 <ul className="mt-4 text-sm text-muted-foreground">
                                     <li>
-                                        <a href="" className="hover:text-foreground transition-all duration-300">
+                                        <a href="https://www.facebook.com/anhtranthedr.7/" className="hover:text-foreground transition-all duration-300">
                                             Facebook
                                         </a>
                                     </li>
                                     <li className="mt-2">
-                                        <a href="" className="hover:text-foreground transition-all duration-300">
+                                        <a href="https://www.instagram.com/trnahnh/" className="hover:text-foreground transition-all duration-300">
                                             Instagram
                                         </a>
                                     </li>
                                     <li className="mt-2">
-                                        <a href="" className="hover:text-foreground transition-all duration-300">
-                                            Twitter
-                                        </a>
-                                    </li>
-                                    <li className="mt-2">
-                                        <a href="" className="hover:text-foreground transition-all duration-300">
+                                        <a href="https://www.linkedin.com/in/anhdtran11/" className="hover:text-foreground transition-all duration-300">
                                             LinkedIn
                                         </a>
                                     </li>
