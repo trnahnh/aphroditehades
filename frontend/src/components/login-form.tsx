@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import logo from "/logo.svg";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { LucideLoader2 } from "lucide-react";
 
@@ -24,8 +24,26 @@ export function LoginForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const lastSubmittedRef = useRef({ email: "", password: "" });
+  const [isDebouncing, setIsDebouncing] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Check if values changed since last submission
+    const hasChanged = email !== lastSubmittedRef.current.email || password !== lastSubmittedRef.current.password;
+
+    if (!hasChanged || isDebouncing) {
+      return; // Block submission
+    }
+
+    // Save current values as last submitted
+    lastSubmittedRef.current = { email, password };
+
+    // Start 3-second debounce
+    setIsDebouncing(true);
+    setTimeout(() => setIsDebouncing(false), 3000);
+
     await login({ email, password });
 
     if (useAuthStore.getState().token) {
@@ -75,7 +93,7 @@ export function LoginForm({
           />
         </Field>
         <Field>
-          <Button type="submit" disabled={isLoggingIn}>
+          <Button type="submit" disabled={isLoggingIn || isDebouncing}>
             {isLoggingIn ? <LucideLoader2 className="animate-spin" /> : "Login"}
           </Button>
         </Field>

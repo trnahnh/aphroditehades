@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 import logo from "/logo.svg";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { toast } from "sonner";
 import { LucideLoader2 } from "lucide-react";
@@ -26,6 +26,9 @@ export function SignupForm({
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isMatchedPassword, setIsMatchedPassword] = useState(true);
+
+  const lastSubmittedRef = useRef({ username: "", email: "", password: "" });
+  const [isDebouncing, setIsDebouncing] = useState(false);
 
   const isValidInfo = () => {
     if (username.trim().length < 3) {
@@ -48,7 +51,25 @@ export function SignupForm({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Check if values changed since last submission
+    const hasChanged =
+      username !== lastSubmittedRef.current.username ||
+      email !== lastSubmittedRef.current.email ||
+      password !== lastSubmittedRef.current.password;
+
+    if (!hasChanged || isDebouncing) {
+      return; // Block submission
+    }
+
     if (isValidInfo()) {
+      // Save current values as last submitted
+      lastSubmittedRef.current = { username, email, password };
+
+      // Start 3-second debounce
+      setIsDebouncing(true);
+      setTimeout(() => setIsDebouncing(false), 3000);
+
       await signup({
         username: username,
         email: email,
@@ -56,7 +77,7 @@ export function SignupForm({
       });
 
       if (useAuthStore.getState().token) {
-        navigate('/dashboard')
+        navigate("/dashboard");
       }
     }
   };
@@ -126,7 +147,7 @@ export function SignupForm({
           />
         </Field>
         <Field>
-          <Button type="submit" disabled={isSigningUp}>
+          <Button type="submit" disabled={isSigningUp || isDebouncing}>
             {isSigningUp ? (
               <LucideLoader2 className="animate-spin" />
             ) : (
