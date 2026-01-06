@@ -107,7 +107,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Generate email verification
+	// Generate email verification token
 	rawEmailToken, hashedEmailToken, err := generateEmailVerificationToken()
 	if err != nil {
 		log.Print("Error generating token for email verification:", err)
@@ -137,6 +137,23 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 		Email:    email,
 		Message:  "Successfully signed up",
 	})
+}
+
+// ---------------------------Verify email---------------------------
+func VerifyEmail(w http.ResponseWriter, r *http.Request) {
+	token := r.URL.Query().Get("token")
+	if token == "" {
+		writeJSON(w, http.StatusBadRequest, ErrorResponse{Error: "Missing authentication token"})
+		return
+	}
+
+	err := verifyToken(r.Context(), database.DB, token)
+	if err != nil {
+		writeJSON(w, http.StatusBadRequest, ErrorResponse{Error: "Invalid token"})
+		return
+	}
+
+	writeJSON(w, http.StatusOK, map[string]string{"message": "Email verified"})
 }
 
 // ---------------------------Login---------------------------
@@ -283,22 +300,6 @@ func verifyToken(ctx context.Context, db *pgxpool.Pool, incomingToken string) er
 
 	_ = deleteVerification(ctx, db, hashedToken)
 	return nil
-}
-
-func VerifyEmail(w http.ResponseWriter, r *http.Request) {
-	token := r.URL.Query().Get("token")
-	if token == "" {
-		writeJSON(w, http.StatusBadRequest, ErrorResponse{Error: "Missing authentication token"})
-		return
-	}
-
-	err := verifyToken(r.Context(), database.DB, token)
-	if err != nil {
-		writeJSON(w, http.StatusBadRequest, ErrorResponse{Error: "Invalid token"})
-		return
-	}
-
-	writeJSON(w, http.StatusOK, map[string]string{"message": "Email verified"})
 }
 
 func sendVerificationEmail(token string) error {
