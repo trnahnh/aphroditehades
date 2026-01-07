@@ -72,7 +72,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Begin transaction, if failed, roll back from here
-	ctx := context.Background()
+	ctx := r.Context()
 	tx, err := database.DB.Begin(ctx)
 	if err != nil {
 		log.Print("Error starting transaction:", err)
