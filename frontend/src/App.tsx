@@ -5,6 +5,8 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import DashboardPage from "./pages/Dashboard";
+import GenerativeIdentityPage from "./pages/GenerativeIdentityPage";
+import TrafficAnalyticsPage from "./pages/TrafficAnalyticsPage";
 import AuthCallbackPage from "./pages/AuthCallbackPage";
 import GridBackground from "./components/GridBackground";
 
@@ -37,6 +39,8 @@ function App() {
         <Route path="/auth/callback" element={<AuthCallbackPage />} />
         <Route element={<DashboardLayout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/generative-identity" element={<GenerativeIdentityPage />} />
+          <Route path="/traffic-analytics" element={<TrafficAnalyticsPage />} />
         </Route>
       </Routes>
     </>

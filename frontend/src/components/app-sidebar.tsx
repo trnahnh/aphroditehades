@@ -1,5 +1,11 @@
 import * as React from "react";
-import { IconHelp, IconSettings } from "@tabler/icons-react";
+import {
+  IconChartBar,
+  IconFingerprint,
+  IconHelp,
+  IconSettings,
+} from "@tabler/icons-react";
+import { Link, useLocation } from "react-router-dom";
 
 import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
@@ -7,8 +13,12 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
+  SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
@@ -20,6 +30,18 @@ const data = {
     email: "user@example.com",
     avatar: "",
   },
+  services: [
+    {
+      title: "Generative Identity",
+      url: "/generative-identity",
+      icon: IconFingerprint,
+    },
+    {
+      title: "Traffic Analytics",
+      url: "/traffic-analytics",
+      icon: IconChartBar,
+    },
+  ],
   navSecondary: [
     {
       title: "Settings",
@@ -36,21 +58,44 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { toggleSidebar, state } = useSidebar();
+  const location = useLocation();
 
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <div className="flex items-center gap-3 h-10" onClick={() => toggleSidebar()}>
-                <Logo />
-                 {state === "expanded" && <span>KatanaID</span>}
+            <div
+              className="flex items-center gap-3 h-10"
+              onClick={() => toggleSidebar()}
+            >
+              <Logo />
+              {state === "expanded" && <span>KatanaID</span>}
             </div>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        {/* Add your service navigation here */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Services</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {data.services.map((service) => (
+                <SidebarMenuItem key={service.title}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={location.pathname === service.url}
+                  >
+                    <Link to={service.url}>
+                      <service.icon />
+                      <span>{service.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
