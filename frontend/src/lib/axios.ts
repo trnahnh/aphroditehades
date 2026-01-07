@@ -7,6 +7,19 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+// Request interceptor - adds auth token to every request
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = useAuthStore.getState().token;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// Response interceptor - handles 401 errors
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
