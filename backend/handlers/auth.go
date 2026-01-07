@@ -159,7 +159,7 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// ---------------------------Verify email---------------------------
+// -----------------------------------Verify email-----------------------------------
 func VerifyEmail(w http.ResponseWriter, r *http.Request) {
 	token := r.URL.Query().Get("token")
 	if token == "" {
@@ -180,7 +180,6 @@ func VerifyEmail(w http.ResponseWriter, r *http.Request) {
 func Login(w http.ResponseWriter, r *http.Request) {
 	var req LoginRequest
 
-	// Decode JSON body
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		log.Print("Error decoding JSON:", err)
@@ -191,14 +190,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	email := strings.ToLower(strings.TrimSpace(req.Email))
 	password := strings.TrimSpace(req.Password)
 
-	// Validate input
 	if email == "" || password == "" {
 		log.Print("Request has empty field")
 		writeJSON(w, http.StatusBadRequest, ErrorResponse{Error: "Email and password required"})
 		return
 	}
 
-	// Find user by email
 	var user User
 	err = database.DB.QueryRow(
 		context.Background(),
@@ -314,7 +311,11 @@ func verifyToken(ctx context.Context, db *pgxpool.Pool, incomingToken string) er
 		return errors.New("failed to verify user")
 	}
 
-	_ = deleteVerification(ctx, db, hashedToken)
+	err = deleteVerification(ctx, db, hashedToken)
+	if err != nil {
+		return err
+	}
+	
 	return nil
 }
 
