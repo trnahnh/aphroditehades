@@ -29,6 +29,27 @@ func main() {
 		log.Println("Warning: .env file not found")
 	}
 
+	requiredEnvs := []string{
+		"PORT",
+		"DATABASE_URL",
+		"JWT_SECRET",
+		"GOOGLE_CLIENT_ID",
+		"GOOGLE_CLIENT_SECRET",
+		"GITHUB_CLIENT_ID",
+		"GITHUB_CLIENT_SECRET",
+		"RESEND_API_KEY",
+		"FRONTEND_URL",
+		"BACKEND_URL",
+		"DEV_ENVIRONMENT",
+	}
+
+	for _, env := range requiredEnvs {
+		if os.Getenv(env) == "" {
+			log.Fatal("Missing required env value:", env)
+		}
+	}
+
+	// Open DB to run migration
 	db, err := sql.Open("pgx", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		log.Fatal("Failed to open DB for migrations:", err)
@@ -46,23 +67,21 @@ func main() {
 
 	db.Close()
 
-	// Connect to database
+	// Open DB for user operation
 	database.Connect()
 	defer database.Close()
 
-	// Initialize OAuth
 	if err := handlers.InitOAuth(); err != nil {
 		log.Fatal("Failed to initialize OAuth:", err)
 	}
 
-	// Initialize router
 	r := chi.NewRouter()
 
-	// CORS middleware
-	allowedOrigins := []string{"http://localhost:5173", "https://katanaid.com"}
-	if frontendURL := os.Getenv("FRONTEND_URL"); frontendURL != "" {
-		allowedOrigins = append(allowedOrigins, frontendURL)
+	allowedOrigins := []string{os.Getenv("FRONTEND_URL")}
+	if os.Getenv("DEV_ENVIRONMENT") == "development" {
+		allowedOrigins = append(allowedOrigins, os.Getenv("BACKEND_URL"))
 	}
+
 	r.Use(cors.Handler(cors.Options{
 		AllowedOrigins:   allowedOrigins,
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
@@ -71,10 +90,8 @@ func main() {
 		MaxAge:           300,
 	}))
 
-	// Register health endpoint
 	r.Get("/health", handlers.Health)
 
-	// Auth endpoints
 	r.Route("/auth", func(r chi.Router) {
 		r.Use(middleware.AuthRateLimiter())
 		r.Post("/signup", handlers.Signup)
@@ -82,20 +99,15 @@ func main() {
 		r.Get("/verify-email", handlers.VerifyEmail)
 	})
 
-	// Contact endpoint
 	r.With(middleware.ContactRateLimiter()).Post("/api/contact", handlers.Contact)
 
-	// OAuth endpoints
 	r.Get("/auth/google", handlers.GoogleLogin)
 	r.Get("/auth/google/callback", handlers.GoogleCallback)
 	r.Get("/auth/github", handlers.GitHubLogin)
 	r.Get("/auth/github/callback", handlers.GitHubCallback)
 
-	// Start server
 	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080"
-	}
-	fmt.Println("Server is running on port", port)
-	http.ListenAndServe(":"+port, r)
+	fmt.Println("Server is starting on port", port)
+
+	http.ListenAndServe(":"+port, r)	
 }
