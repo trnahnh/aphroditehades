@@ -154,10 +154,10 @@ func Signup(w http.ResponseWriter, r *http.Request) {
 	log.Printf("New user signed up: %s - %s", username, email)
 
 	writeJSON(w, http.StatusCreated, AuthSuccessResponse{
-		Token:    tokenString,
-		Username: username,
-		Email:    email,
-		Message:  "Successfully signed up",
+		Token:         tokenString,
+		Username:      username,
+		Email:         email,
+		EmailVerified: false,
 	})
 }
 
@@ -201,9 +201,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	var user User
 	err = database.DB.QueryRow(
 		context.Background(),
-		"SELECT id, username, email, password_hash FROM users WHERE email = $1",
+		"SELECT id, username, email, password_hash, email_verified FROM users WHERE email = $1",
 		email,
-	).Scan(&user.ID, &user.Username, &user.Email, &user.PasswordHash)
+	).Scan(&user.ID, &user.Username, &user.Email, &user.PasswordHash, &user.EmailVerified)
 
 	if err != nil {
 		log.Print("Incorrect username or password")
@@ -239,10 +239,10 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	log.Printf("User logged in: %s - %s", user.Username, user.Email)
 	writeJSON(w, http.StatusOK, AuthSuccessResponse{
-		Token:    tokenString,
-		Username: user.Username,
-		Email:    user.Email,
-		Message:  "Successfully logged in",
+		Token:         tokenString,
+		Username:      user.Username,
+		Email:         user.Email,
+		EmailVerified: user.EmailVerified,
 	})
 }
 
@@ -317,7 +317,7 @@ func verifyToken(ctx context.Context, db *pgxpool.Pool, incomingToken string) er
 	if err != nil {
 		return err
 	}
-	
+
 	return nil
 }
 
