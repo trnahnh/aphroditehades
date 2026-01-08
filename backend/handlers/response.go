@@ -12,10 +12,11 @@ func writeJSON(w http.ResponseWriter, status int, data any) {
 }
 
 type User struct {
-	ID           int
-	Username     string
-	Email        string
-	PasswordHash string
+	ID            int
+	Username      string
+	Email         string
+	PasswordHash  string
+	EmailVerified bool
 }
 
 type SignupRequest struct {
@@ -36,10 +37,10 @@ type UsernameGenerationRequest struct {
 
 // Shared by both login and signup
 type AuthSuccessResponse struct {
-	Token    string `json:"token"`
-	Username string `json:"username"`
-	Email    string `json:"email"`
-	Message  string `json:"message"`
+	Token         string `json:"token"`
+	Username      string `json:"username"`
+	Email         string `json:"email"`
+	EmailVerified bool   `json:"isVerified"`
 }
 
 type VerificationSuccessResponse struct {
