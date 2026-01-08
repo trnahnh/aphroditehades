@@ -211,6 +211,18 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Check if this is an OAuth-only account
+	if strings.HasPrefix(user.PasswordHash, "oauth:") {
+		parts := strings.Split(user.PasswordHash, ":")
+		provider := "OAuth"
+		if len(parts) >= 2 {
+			provider = strings.Title(parts[1]) // "google" -> "Google"
+		}
+		log.Printf("OAuth user attempted password login: %s", email)
+		writeJSON(w, http.StatusBadRequest, ErrorResponse{Error: fmt.Sprintf("This account uses %s login", provider)})
+		return
+	}
+
 	err = bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(password))
 	if err != nil {
 		log.Print("Incorrect username or password")
