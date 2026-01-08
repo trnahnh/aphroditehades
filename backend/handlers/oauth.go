@@ -469,8 +469,8 @@ func findOrCreateOAuthUser(email, name, provider string, emailVerified bool) (st
 		oauthToken := base64.StdEncoding.EncodeToString(randomBytes)
 
 		err = tx.QueryRow(ctx,
-			`INSERT INTO users (username, email, password_hash)
-			 VALUES ($1, $2, $3)
+			`INSERT INTO users (username, email, password_hash, email_verified)
+			 VALUES ($1, $2, $3, TRUE)
 			 RETURNING id`,
 			username,
 			email,
