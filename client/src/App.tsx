@@ -1,17 +1,17 @@
 import { Route, Routes, Outlet } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import { Toaster } from "sonner";
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import DashboardPage from "./pages/Dashboard";
-import GenerativeIdentityPage from "./pages/GenerativeIdentityPage";
-import TrafficAnalyticsPage from "./pages/TrafficAnalyticsPage";
-import TokenCallbackPage from "./pages/AuthCallbackPage";
+import LandingPage from "./pages/public-pages/LandingPage";
+import LoginPage from "./pages/public-pages/LoginPage";
+import SignupPage from "./pages/public-pages/SignupPage";
+import DashboardPage from "./pages/service-pages/Dashboard";
+import GenerativeIdentityPage from "./pages/service-pages/GenerativeIdentityPage";
+import TrafficAnalyticsPage from "./pages/service-pages/TrafficAnalyticsPage";
+import TokenCallbackPage from "./pages/public-pages/AuthCallbackPage";
 import GridBackground from "./components/GridBackground";
 import DashboardLayout from "./components/layouts/DashboardLayout";
 import RequireVerified from "./components/RequireVerified";
-import EmailServicePage from "./pages/EmailServicePage";
+import EmailServicePage from "./pages/service-pages/EmailServicePage";
 
 const PublicLayout = () => (
   <>
