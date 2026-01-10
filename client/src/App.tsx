@@ -11,6 +11,7 @@ import TokenCallbackPage from "./pages/AuthCallbackPage";
 import GridBackground from "./components/GridBackground";
 import DashboardLayout from "./components/layouts/DashboardLayout";
 import RequireVerified from "./components/RequireVerified";
+import EmailServicePage from "./pages/EmailServicePage";
 
 const PublicLayout = () => (
   <>
@@ -53,6 +54,14 @@ function App() {
             element={
               <RequireVerified>
                 <TrafficAnalyticsPage />
+              </RequireVerified>
+            }
+          />
+          <Route
+            path="email-service"
+            element={
+              <RequireVerified>
+                <EmailServicePage />
               </RequireVerified>
             }
           />

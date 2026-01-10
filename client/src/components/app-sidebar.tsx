@@ -4,6 +4,7 @@ import {
   IconChartBar,
   IconFingerprint,
   IconSettings,
+  IconMailCode
 } from "@tabler/icons-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -42,6 +43,11 @@ const data = {
       url: "/dashboard/traffic-analytics",
       icon: IconChartBar,
     },
+    {
+      title: "Email Service",
+      url: "/dashboard/email-service",
+      icon: IconMailCode,
+    }
   ],
   navSecondary: [
     {
