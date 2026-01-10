@@ -13,25 +13,20 @@ import (
 	"katanaid/util"
 )
 
-// ContactRequest is the expected JSON body
 type ContactRequest struct {
 	Email  string `json:"email"`
 	Reason string `json:"reason"`
 }
 
-// ContactResponse is the success response
 type ContactResponse struct {
 	Message string `json:"message"`
 }
 
-// Email validation regex
 var contactEmailRegex = regexp.MustCompile(`^[^\s@]+@[^\s@]+\.[^\s@]+$`)
 
-// Contact handles POST /api/contact
 func Contact(w http.ResponseWriter, r *http.Request) {
 	var req ContactRequest
 
-	// Decode JSON body
 	err := json.NewDecoder(r.Body).Decode(&req)
 	if err != nil {
 		log.Print("Error decoding JSON:", err)
@@ -39,11 +34,9 @@ func Contact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Normalize input
 	email := strings.ToLower(strings.TrimSpace(req.Email))
 	reason := strings.TrimSpace(req.Reason)
 
-	// Validate input
 	if email == "" || reason == "" {
 		log.Print("Missing required fields")
 		util.WriteJSON(w, http.StatusBadRequest, models.ErrorResponse{Error: "Email and reason are required"})
@@ -68,7 +61,6 @@ func Contact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Save to database
 	_, err = database.DB.Exec(
 		context.Background(),
 		"INSERT INTO contacts (email, reason) VALUES ($1, $2)",
