@@ -7,6 +7,7 @@ import {
   IconMailCode,
   IconShieldCheck,
   IconShield,
+  IconShieldLock,
 } from "@tabler/icons-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -60,6 +61,11 @@ const data = {
       title: "CAPTCHA",
       url: "/dashboard/captcha",
       icon: IconShield,
+    },
+    {
+      title: "Trial Prevention",
+      url: "/dashboard/trust",
+      icon: IconShieldLock,
     }
   ],
   navSecondary: [

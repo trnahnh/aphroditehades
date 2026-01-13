@@ -14,6 +14,7 @@ import RequireVerified from "./components/RequireVerified";
 import EmailServicePage from "./pages/service-pages/EmailServicePage";
 import EmailFraudPage from "./pages/service-pages/EmailFraudPage";
 import CaptchaPage from "./pages/service-pages/CaptchaPage";
+import TrustScorePage from "./pages/service-pages/TrustScorePage";
 
 const PublicLayout = () => (
   <>
@@ -80,6 +81,14 @@ function App() {
             element={
               <RequireVerified>
                 <CaptchaPage />
+              </RequireVerified>
+            }
+          />
+          <Route
+            path="trust"
+            element={
+              <RequireVerified>
+                <TrustScorePage />
               </RequireVerified>
             }
           />
