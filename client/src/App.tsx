@@ -16,6 +16,7 @@ import EmailServicePage from "./pages/service-pages/EmailServicePage";
 import EmailFraudPage from "./pages/service-pages/EmailFraudPage";
 import CaptchaPage from "./pages/service-pages/CaptchaPage";
 import TrustScorePage from "./pages/service-pages/TrustScorePage";
+import AccountPage from "./pages/service-pages/AccountPage";
 
 const PublicLayout = () => (
   <>
@@ -45,6 +46,7 @@ function App() {
         <Route path="/auth/callback" element={<TokenCallbackPage />} />
         <Route path="/auth/verified" element={<TokenCallbackPage />} />
         <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route path="account" element={<AccountPage />} />
           <Route index element={<DashboardPage />} />
           <Route
             path="generative-identity"

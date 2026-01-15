@@ -36,11 +36,26 @@ export function NavUser({
     name: string
     email: string
     avatar: string
+    firstName?: string
+    lastName?: string
   }
 }) {
   const { isMobile } = useSidebar()
   const { logout } = useAuthStore()
   const navigate = useNavigate()
+
+  // Compute avatar initials from first/last name, fallback to username
+  const getInitials = (): string => {
+    if (user.firstName && user.lastName) {
+      return `${user.firstName[0]}${user.lastName[0]}`.toUpperCase()
+    }
+    if (user.name && user.name.length >= 2) {
+      return user.name.slice(0, 2).toUpperCase()
+    }
+    return "U"
+  }
+
+  const initials = getInitials()
 
   return (
     <SidebarMenu>
@@ -53,7 +68,7 @@ export function NavUser({
             >
               <Avatar className="h-8 w-8 rounded-lg grayscale">
                 <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                <AvatarFallback className="rounded-lg">{initials}</AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
                 <span className="truncate font-medium">{user.name}</span>
@@ -74,7 +89,7 @@ export function NavUser({
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                  <AvatarFallback className="rounded-lg">{initials}</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.name}</span>
@@ -86,7 +101,7 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={() => navigate("/dashboard/account")}>
                 <IconUserCircle />
                 Account
               </DropdownMenuItem>
